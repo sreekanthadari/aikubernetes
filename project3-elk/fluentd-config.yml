@@ -21,7 +21,7 @@ data:
       format none
      </source>    
 
-    <match system.logs>
+    <match kube.logs>
       @type elasticsearch
       host elasticsearch-service
       port 9200
