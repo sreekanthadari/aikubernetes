@@ -11,6 +11,7 @@ data:
       pos_file /var/log/fluentd.pos
       tag kube.logs
       format none
+      read_from_head true
     </source>
     
     <source>
