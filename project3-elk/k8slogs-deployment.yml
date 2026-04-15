@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: k8slogs-app
+  namespace: project3-elk
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: k8slogs-app
+  template:
+    metadata:
+      labels:
+        app: k8slogs-app
+    spec:
+      containers:
+      - name: app
+        image: nginx
+        ports:
+        - containerPort: 80

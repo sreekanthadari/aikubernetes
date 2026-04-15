@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>My App</title>
+</head>
+<body>
+  <h1>Frontend</h1>
+  <button onclick="callBackend()">Call Backend</button>
+
+  <p id="output"></p>
+
+  <script>
+    function callBackend() {
+      fetch("http://backend-service:3000")
+        .then(res => res.text())
+        .then(data => {
+          document.getElementById("output").innerText = data;
+        })
+        .catch(err => console.log(err));
+    }
+  </script>
+</body>
+</html>

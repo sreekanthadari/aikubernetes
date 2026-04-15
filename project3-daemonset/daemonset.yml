@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: log-collector
+  namespace: project3-daemonset
+spec:
+  selector:
+    matchLabels:
+      app: log-collector
+  template:
+    metadata:
+      labels:
+        app: log-collector
+    spec:
+      containers:
+        - name: log-collector
+          image: busybox
+          command: ["/bin/sh", "-c"]
+          args:
+            - while true; do echo "Collecting logs..."; sleep 10; done
+          volumeMounts:
+            - name: varlog
+              mountPath: /var/log
+      volumes:
+        - name: varlog
+          hostPath:
+            path: /var/log
